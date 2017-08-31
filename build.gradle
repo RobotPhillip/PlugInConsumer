@@ -1,0 +1,20 @@
+buildscript {
+
+    repositories {
+        maven {
+            url uri('../repo')
+        }
+    }
+
+    dependencies {
+        classpath group: 'org.gradle', name: 'charlesPlugin', version: '1.0'
+    }
+
+}
+
+apply plugin: 'org.robotsandpencils.charles'
+
+task consumeCharles(type: org.robotsandpencils.CharlesToFileTask) {
+    message = "testing"
+    outputFiles = files("$buildDir/AndroidManifest-1.xml", "$buildDir/AndroidManifest-2.xml")
+}
